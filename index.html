@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ange Evrard Sery - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #5B5FCF;
+            --secondary-color: #8B5FCF;
+            --accent-color: #4169E1;
+            --text-dark: #1a1a1a;
+            --text-light: black;
+            --bg-gradient-start: #4B5FCF;
+            --bg-gradient-end: #8B5FCF;
+            font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+        }
+
+        body {
+            line-height: 2;
+            color: var(--text-light);
+            overflow-x: hidden;
+            -webkit-font-smoothing:antialiased
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff20" d="M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,128C672,107,768,85,864,90.7C960,96,1056,128,1152,133.3C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            bottom: 0;
+            animation: wave 10s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 2rem;
+
+        }
+
+        .profile-circle {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+           
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero .description {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            margin: 5rem auto;
+            box-sizing: border-box;
+            border-width: 0px;
+            border-style: solid;
+            border-color: rgb(229, 231, 235);
+
+
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            margin-top: 3rem;
+            color: var(--text-dark);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: center;
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
+
+        .about-text {
+            padding: 2rem;
+        }
+
+        .about-text h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color :var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color : #666
+        }
+
+        .info-item .icon-phone {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(90deg, #5b6bff, #a24bff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .info-item .icon-mail {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(90deg, #a24bff, #5b6bff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .info-item .icon-loc {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(90deg, #34d399, #06b6d4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .about-image {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .language-bars {
+            margin-top: 2rem;
+        }
+
+        .language-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .language-item .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            background: #e0e0e0;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+            animation: fillBar 2s ease;
+        }
+
+        @keyframes fillBar {
+            from { width: 0; }
+        }
+
+        .interests {
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:16px;
+        }
+
+        .interest-item {
+            display:flex;
+            gap:14px;align-items:center;
+            background:#fbfcff;padding:14px;
+            border-radius:10px;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.07) ;
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
+            
+        }
+
+        .interest-item:hover{
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(16,24,40,0.08);
+        }
+
+        .interest-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(90deg, #7c3aed, #06b6d4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* Experience Section */
+        .section-experience{
+            --tw-bg-opacity: 1;
+            background-color: #F6F7FB;
+        }
+
+        .experience-timeline {
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
+
+        .timeline-item .exp-list{display:flex;flex-direction:column;gap:40px}
+        .exp-card{display:flex;gap:18px;background:ffffff;padding:20px;border-radius:14px;align-items:flex-start;border-radius: 10px;box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);transition-duration: .4s;}
+        .expo-card:hover{transform: translateY(-4px);box-shadow: 0 10px 30px rgba(16,24,40,0.08); }
+        .exp-icon{width:56px;height:56px;border-radius:12px;flex-shrink:0}
+        .exp-meta{flex:1}
+        .exp-title{font-weight:700;margin:0}
+        .exp-org{color:#5b6bff;font-weight:600;margin-top:6px}
+        .exp-bullets{margin-top:12px;color:#6b7280}
+        .exp-date{background:#eef5ff;color:#1e3a8a;padding:8px 12px;border-radius:18px;font-size:13px}
+
+        /* Skills Section */
+        .competence-timeline{
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .skill-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .tools-section {
+            margin-top: 4rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .tool-category h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .tool-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .tool-icon-office {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(90deg, #34d399, #06b6d4);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .tool-info {
+            flex: 1;
+        }
+
+        .tool-name {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .tool-progress {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .tool-progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+        }
+
+        .tool-progress-fill-office {
+            height: 100%;
+            background: linear-gradient(90deg, #34d399, #06b6d4);
+            border-radius: 4px;
+        }
+
+        /* Formation Section */
+        .section-formation{
+            --tw-bg-opacity: 1;
+            background-color: #F6F7FB;
+        }
+
+        .education-timeline {
+            padding-left: 5rem;
+            padding-right: 5rem;
+            position: relative;
+        }
+
+        .education-item {
+            position: relative;
+            padding-left: 8%;
+            margin-bottom: 3rem;
+        }
+
+        .education-dot {
+            position: absolute;
+            left: 3.2%;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        .education-card{display:flex;gap:18px;background:ffffff;padding:20px;border-radius:14px;align-items:flex-start;border-radius: 10px;box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);transition-duration: .4s;}
+        .education-card:hover{transform: translateY(-4px);box-shadow: 0 10px 30px rgba(16,24,40,0.08); }
+        .education-icon{width:56px;height:56px;border-radius:12px;flex-shrink:0}
+        .education-meta{flex:1}
+        .education-title{font-weight:700;margin:0}
+        .education-org{color:#5b6bff;font-weight:600;margin-top:6px}
+        .education-bullets{margin-top:12px;color:#6b7280}
+        .education-date{background:#e4edf9;color:#1b50e2;padding:8px 12px;border-radius:18px;font-size:13px}
+
+
+        .education-card .mention{
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: #d1f0df;
+            color: #14532d;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            white-space: nowrap;
+        }
+
+                .education-card .mention-bien{
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: #f0eca7;
+            --tw-text-opacity: 1;
+            color: rgb(133 77 14 / var(--tw-text-opacity, 1));
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .education-side {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;               /* espace entre date et pastille */
+            align-items: flex-end;  /* aligne à droite du bloc */
+            margin-left: 18px;
+        }
+
+        /* Projects Section */
+        .project-timeline{
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-tags {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-tag {
+            background: rgba(255,255,255,0.9);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .project-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.3rem 0.8rem;
+            background: #f0f0f0;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.3s;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #5b6bff, #a24bff);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-content {
+            display:contents;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(90deg, #5b6bff, #a24bff);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .contact-details h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-details p {
+            color: #666;
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 2rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+                align-items: center;
+            }
+
+            .timeline-content {
+                width: 90%;
+            }
+
+            .timeline-line {
+                left: 20px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .education-line {
+                left: 20px;
+            }
+
+            .education-item {
+                padding-left: 60px;
+            }
+
+            .education-dot {
+                left: 10px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations supplémentaires */
+        .fade-in {
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 1s ease;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-in-right {
+            animation: slideInRight 1s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f0f0f0;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Ange SERY</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+                <li><a href="#apropos" class="nav-link">À propos</a></li>
+                <li><a href="#experience" class="nav-link">Expérience</a></li>
+                <li><a href="#competences" class="nav-link">Compétences</a></li>
+                <li><a href="#formation" class="nav-link">Formation</a></li>
+                <li><a href="#projets" class="nav-link">Projets</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <div class="profile-circle">
+                <img src="image/Profil.jpg">
+            </div>
+            <h1>ANGE EVRARD<span style="color: white;"> SERY</span></h1>
+            <p class="subtitle">Étudiant en Master 2 Géomatique et Observation de la Terre</p>
+            <p class="description">
+                
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <span>📧</span> Me Contacter
+                </a>
+                <a href="CV/CV.pdf" class="btn btn-secondary">
+                    <span>📃</span> Télecharger CV
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos">
+        <h2 class="section-title">À Propos de Moi</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Mon Profil</h3>
+                <p style="text-align: justify;">
+                    Etudiant en Master 2 OTG, doté d'un esprit ouvert, et ayant travaillé sur des projets à vocation recherche et professionnelles, 
+                    je suis passioné par la géomatique ainsi que par son application direct dans divers secteurs d'activité tels que l'environnement, la mobilité, l'agriculture, etc.
+                    De plus, je maitrise les outils en systèmes d'information géographique (SIG), télédétection, traitements d'images, cartographie numérique et modélisation spatiale. <br> <br>
+                    <strong>Toujours à la recherche d'un stage d’une durée minimale de 5 mois et maximale de 6 mois</strong>, je souhaite mettre en pratique mes compétences théoriques et pratiques 
+                    sur des cas concrets, afin de contribuer significativement à l'avancement des connaissances scientifiques et au développement des projets 
+                    professionnels mobilisant des compétences en géomatique.
+                </p>
+                
+                <h3>Informations</h3>
+                <div class="info-item">
+                    <div class="icon-phone">📞</div>
+                    <div>+33 7 57 51 62 60</div>
+                </div>
+                <div class="info-item">
+                    <div class="icon-mail">✉️</div>
+                    <div>angeevrardsery18@gmail.com</div>
+                </div>
+                <div class="info-item">
+                    <div class="icon-loc">📍</div>
+                    <div>Strasbourg, France</div>
+                </div>
+
+                <h3>Langues</h3>
+                <div class="language-bars">
+                    <div class="language-item">
+                        <div class="header">
+                            <span>Français</span>
+                            <span>Langue maternelle</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="language-item">
+                        <div class="header">
+                            <span>Anglais</span>
+                            <span>Niveau A2</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <div > <img src="https://www.aquaportail.com/pictures2208/imagerie-satellitaire.jpg" alt="photo1" style="height:100%; width: 100% ;border-radius:10px;box-shadow:0 18px 40px rgba(2,6,23,0.06)">
+                    <h3 style="margin-bottom: 2rem;">Centres d'Intérêt</h3>
+                    <div class="interests">
+                        <div class="interest-item">
+                            <div class="interest-icon">🎧</div>
+                            <span>Musique</span>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-icon">✈️</div>
+                            <span>Voyage</span>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-icon">⚽</div>
+                            <span>Basket, Natation</span>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-icon">📚</div>
+                            <span>Lecture </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class = "section-experience"> 
+            <h2 class="section-title">Expériences Professionnelles et Universitaires</h2>
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="exp-list">
+                        <div class="exp-card card">
+                            <div class="exp-icon" style="background:linear-gradient(90deg,#2563eb,#7c3aed);display: flex;align-items: center;justify-content: center;color: white;font-size: 2rem">🔬</div>
+                            <div class="exp-meta">
+                            <h3 class="exp-title">Instrumentation  et métrologie Terrain</h3>
+                            <div class="exp-org">📍Super-Sauze — Alpes-de-Haute-Provence, France</div>
+                            <p class="exp-bullets" style="--tw-text-opacity: 1;color: rgb(55 65 81 / var(--tw-text-opacity, 1));"><strong>Sujet :</strong> Modèle 3D de l'escarpement principal du glissement de terrain de Super-Sauze.</p>
+                            <h4 style = "margin-top: 2rem;"> Missions principales :</h4>
+                            <ul style="margin-top: 1rem; color: #6b7280; padding-left: 40px;">
+                            <li> Acquisition des données nécessaires à réaliser un modèle 3D</li>
+                            <li> Géoréférencement du modèle 3D</li>
+                            <li> Evaluation du modèle</li>
+                            <li> Comparaison du modèle par rapport à un modèle 3D antécédent (2022)</li>
+                            </ul>
+                            </div>
+                            <div style="margin-left:18px"><div class="exp-date">📅 6 Octobre 2025 - 9 Octobre 2025</div></div>
+                        </div>
+
+                        <div class="exp-card card">
+                            <div class="exp-icon" style="background:linear-gradient(90deg,#2563eb,#7c3aed);display: flex;align-items: center;justify-content: center;color: white;font-size: 2rem">🔬</div>
+                            <div class="exp-meta">
+                            <h3 class="exp-title">Travail d'Étude et de Recherche (TER)</h3>
+                            <div class="exp-org">📍Université de Strasbourg — Strasbourg, France</div>
+                            <p class="exp-bullets" style="--tw-text-opacity: 1;color: rgb(55 65 81 / var(--tw-text-opacity, 1));"><strong>Sujet :</strong> Traitement et intégration de données réseaux multi-sources pour le calcul d'itinéraires.</p>
+                            <h4 style = "margin-top: 2rem;"> Missions principales :</h4>
+                            <ul style="margin-top: 1rem; color: #6b7280; padding-left: 40px;">
+                            <li> Identification et correction automatisée des erreurs topologiques et attributaires du réseau routier de la BD CARTO</li>
+                            <li> Intégration de deux sources de données réseaux (BD Topo et BD Carto) via le Modèle Builder de QGIS</li>
+                            <li> Automatisation des différentes tâches effectuées avec python pour une reproductibilité</li>
+                            </ul>
+                            </div>
+                            <div style="margin-left:18px"><div class="exp-date">📅 Mai 2025 - Juillet 2025</div></div>
+                        </div>
+
+                        <div class="exp-card card " style = "margin-bottom: 6rem;">
+                            <div class="exp-icon" style="background:linear-gradient(90deg,#2563eb,#7c3aed);display: flex;align-items: center;justify-content: center;color: white;font-size: 2rem"">👷🏾</div>
+                            <div class="exp-meta">
+                            <h3 class="exp-title">Technicien LiDAR / SIG (Stage)</h3>
+                            <div class="exp-org">📍Laboratoire GEGENA - Université de Reims Champagne-Ardenne — Reims, France</div>
+                            <p class="exp-bullets" style="--tw-text-opacity: 1;color: rgb(55 65 81 / var(--tw-text-opacity, 1));"><strong>Sujet : </strong>Approche archéogéomorphologique (SIG, LiDAR). Missions : traitement LiDAR, digitalisation, géoréférencement, dépouillement d'archives.</p>
+                            <h4 style = "margin-top: 2rem;"> Missions princiaples :</h4>
+                            <ul style="margin-top: 1rem; color: #6b7280;padding-left: 40px;">
+                            <li> Téléchargement des données nécessaires à l'étude : LiDar HD</li>
+                            <li> Création du Modèle Mumérique de Terrain (MNT)</li>
+                            <li> Traitement du MNT (profil topographique, outils de visualisation des polémoformes)</li>
+                            <li> Etablissement d'un protocole de digitalisation des polémoformes</li>
+                            <li> Caractérisation des polémoformes à partir d'archives cartographies anciens</li>
+                            </ul>
+                            </div>
+                            <div style="margin-left:18px"><div class="exp-date">📅 Fév 2024 - Juin 2024</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </section>
+
+    <!-- Skills Section -->
+    <section id="competences">
+        <div class = "competence-timeline"> 
+                <h2 class="section-title">Compétences</h2>
+        
+            <h3 style="text-align: center; margin: 2rem 0;">Compétences Clés</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🗂️</div>
+                    <h3>Base de données spatiale</h3>
+                    <p>Gestionnaire de bases de données SIG <strong>||</strong> Gestion des projets (mise en place de bases de données, enrichissement) <strong>||</strong> Administration SIG (PgAdmin, PostgreSQL)</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3>Programmation SIG</h3>
+                    <p>Développement d'algorithme de traitements d'images sous python (Pandas, Numpy, Scikit-Image, Matplotlib, GeoAI)</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🛰️</div>
+                    <h3>Télédétection & Photogrammétrie</h3>
+                    <p>Collecter des données géospatiales à l’aide d’outils SIG et des satellites <strong>||</strong> Traitement & Analyse d'images satellite, drone <strong>||</strong> Réaliser des cartes thématiques</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🗺️</div>
+                    <h3>Cartographie</h3>
+                    <p>Webmapping & StoryMaps <strong>||</strong> Développement Web SIG (HTML, CSS, Javascript) <strong>||</strong> Maquette numérique (BIM-SIG) en 3D</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3>Analyse Spatiale</h3>
+                    <p>Compréhension de l'objectif du projet, Préparation des données <strong>||</strong> Choix des outils et techniques <strong>||</strong> Production de visualisations (cartes statiques, cartes intéractives, dashboard...) <strong>||</strong> Modélisation spatiale</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📈</div>
+                    <h3>Marchine Learning</h3>
+                    <p>Développement d’algorithmes de segmentation, de détection automatique d'objets</p>
+                </div>
+            </div>
+
+            <div class="tools-section">
+                <div class="tools-grid">
+                    <div class="tool-category">
+                        <h3>Logiciels Techniques & languages informatiques</h3>
+                        <div class="tool-item">
+                            <div class="tool-icon">🗺️</div>
+                            <div class="tool-info">
+                                <div class="tool-name">QGIS</div>
+                                <div class="tool-progress">
+                                    <div class="tool-progress-fill" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">🌍</div>
+                            <div class="tool-info">
+                                <div class="tool-name">ArcGIS Pro</div>
+                                <div class="tool-progress">
+                                    <div class="tool-progress-fill" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">🌍</div>
+                            <div class="tool-info">
+                                <div class="tool-name">ArcGIS Online</div>
+                                <div class="tool-progress">
+                                    <div class="tool-progress-fill" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">✈️</div>
+                            <div class="tool-info">
+                                <div class="tool-name">CloudCompare</div>
+                                <div class="tool-progress">
+                                    <div class="tool-progress-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="tool-item">
+                            <div class="tool-icon">📸</div>
+                            <div class="tool-info">
+                                <div class="tool-name">Metashape</div>
+                                <div class="tool-progress">
+                                    <div class="tool-progress-fill" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">🛰️</div>
+                            <div class="tool-info">
+                                <div class="tool-name">SNAP</div>
+                                <div class="tool-progress">
+                                    <div class="tool-progress-fill" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">📐</div>
+                            <div class="tool-info">
+                                <div class="tool-name">AutoCAD/Covadis</div>
+                                <div class="tool-progress">
+                                    <div class="tool-progress-fill" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <h3>Pack Office</h3>
+                        <div class="tool-item">
+                            <div class="tool-icon-office">📝</div>
+                            <div class="tool-info">
+                                <div class="tool-name">Word</div>
+                                <div class="tool-progress">
+                                    <div class="tool-progress-fill-office" style="width: 95%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon-office">📊</div>
+                            <div class="tool-info">
+                                <div class="tool-name">Excel</div>
+                                <div class="tool-progress">
+                                    <div class="tool-progress-fill-office" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon-office">📺</div>
+                            <div class="tool-info">
+                                <div class="tool-name">PowerPoint</div>
+                                <div class="tool-progress">
+                                    <div class="tool-progress-fill-office" style="width: 88%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Formation Section -->
+    <section id="formation">
+        <div class = "section-formation">
+                <h2 class="section-title">Formations</h2>   
+            <div class="education-timeline">
+                <div class="education-line"></div>
+                
+                <div class="education-item">
+                    <div class="education-dot"></div>
+                    <div class="education-card card">
+                            <div class="education-icon" style="background:linear-gradient(90deg,#7c3aed,#7c3aed);display: flex;align-items: center;justify-content: center;color: white;font-size: 2rem">🎓</div>
+                            <div class="education-meta">
+                                <h3 class="education-title">Master 2 Observation de la Terre et Géomatique</h3>
+                                <div class="education-org">📍Univserité de Strabourg, France</div> 
+                                <p class="education-bullets" style="--tw-text-opacity: 1;color: rgb(55 65 81 / var(--tw-text-opacity, 1)); margin-top: 2rem;">Formation avancée en télédétection, traitements d'images, webmaping et cartographie 3D</p>
+                                
+                            </div>
+                            <div class = "education-side">
+                                <div class="education-date">📅 Encours </div>
+                                <div><span class="mention">En cours</span></div>
+                            </div>
+                                
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-dot"></div>
+                    <div class="education-card card">
+                            <div class="education-icon" style="background:linear-gradient(90deg,#7c3aed,#7c3aed);display: flex;align-items: center;justify-content: center;color: white;font-size: 2rem">🎓</div>
+                            <div class="education-meta">
+                                <h3 class="education-title">Master 1 Observation de la Terre et Géomatique</h3>
+                                <div class="education-org">📍Univserité de Strabourg, France</div> 
+                                <p class="education-bullets" style="--tw-text-opacity: 1;color: rgb(55 65 81 / var(--tw-text-opacity, 1)); margin-top: 2rem;">Bases solides en télédétection, traitements d'images satellites, géostatistique et webmaping</p>
+                                
+                            </div>
+                            <div class = "education-side">
+                                <div class="education-date">📅 2024-2025 </div>
+                                <div><span class="mention-bien">Mention Bien</span></div>
+                            </div>
+                                
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-dot"></div>
+                    <div class="education-card card">
+                            <div class="education-icon" style="background:linear-gradient(90deg,#7c3aed,#7c3aed);display: flex;align-items: center;justify-content: center;color: white;font-size: 2rem">🎓</div>
+                            <div class="education-meta">
+                                <h3 class="education-title">Licence Géographie & Aménagement</h3>
+                                <div class="education-org">📍Université de Reims Champagne-Ardenne, France</div> 
+                                <p class="education-bullets" style="--tw-text-opacity: 1;color: rgb(55 65 81 / var(--tw-text-opacity, 1)); margin-top: 2rem;">Formation en géographie physique et humaine, aménagement du territoire</p>
+                                
+                            </div>
+                            <div class = "education-side">
+                                <div class="education-date">📅 2023-2024 </div>
+                                <div><span class="mention-bien">Mention Assez-bien</span></div>
+                            </div>
+                                
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-dot"></div>
+                    <div class="education-card card">
+                            <div class="education-icon" style="background:linear-gradient(90deg,#7c3aed,#7c3aed);display: flex;align-items: center;justify-content: center;color: white;font-size: 2rem">🎓</div>
+                            <div class="education-meta">
+                                <h3 class="education-title">Diplôme de Technicien Supérieur (Géomètre)</h3>
+                                <div class="education-org">📍Institut National Polytechnique Félix Houphouët-Boigny, Côte d'Ivoire</div> 
+                                <p class="education-bullets" style="--tw-text-opacity: 1;color: rgb(55 65 81 / var(--tw-text-opacity, 1)); margin-top: 2rem;">Formation technique en géomètre-topographe et cartographie</p>
+                                
+                            </div>
+                            <div class = "education-side">
+                                <div class="education-date">📅 2020-2023 </div>
+                                <div><span class="mention-bien">Mention Bien</span></div>
+                            </div>
+                                
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projets">
+        <h2 class="section-title">Projets Réalisés</h2>
+        <div class = "project-timeline">
+                <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <div style="background-size: cover;height: 400px;background-position: center;background:url(https://dtm3d.com/wp-content/uploads/2023/04/Screenshot3.jpg)"></div>
+                    <div class="project-tags">
+                        <span class="project-tag">En cours</span>
+                        <span class="project-tag">Risques naturels</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>
+                        <div class="project-icon">✈️</div>
+                        Acquisistion & Traitement de nuage de points 
+                    </h3>
+                    <p style="text-align: justify;">
+                        Cette étude a pour objectif principal de générer un modèle 3D de l'escarpement principal du glissement de terrain de Super-Sauze (France).
+                        Les objectifs spécifiques qui y  sont associés sont : <br>
+                        <ul style="padding-left: 40px; text-align: justify;">
+                            <li>Acquisition des données nécessaires à réaliser un modèle 3D.</li>
+                            <li>Géoréférencement du modèle 3D.</li>
+                            <li>Evaluation de la qualité du modèle.</li>
+                            <li>Comparaison par rapport à un modèle 3D antécédent (2021 ou 2022) - Détection des différences.</li>
+                        </ul>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">QGIS</span>
+                        <span class="tech-tag">LiDar</span>
+                        <span class="tech-tag">Agisoft Metashape</span>
+                        <span class="tech-tag">CloudCompare</span>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <div style="background-size:COVER ;height: 400px; background-repeat:no-repeat; background-position: center top; background:url(image/image_2.png)"></div>
+                    <div class="project-tags">
+                        <span class="project-tag">Terminé</span>
+                        <span class="project-tag">Agriculture</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>
+                        <div class="project-icon">🛰️</div>
+                        Diagnostic de l'Occupation de Parcelles Agricoles 
+                    </h3>
+                    <p style="text-align: justify;">
+                        Cette étude avait pour objectif principal de mettre en évidence l'évolution des modes d'occupation des parcelles agricoles entre deux périodes : estivales et hivernales, dans le Conté de Kern
+                        en Californie. les objectis spécifiques qui y sont associés sont : <br>
+                         <ul style="padding-left: 40px; text-align: justify;">
+                            <li>Acquisition des données : images Sentinel-2 (bande du visible).</li>
+                            <li>Calcul d'indices de classification.</li>
+                            <li>Classification supervisée avec le plugin SCP.</li>
+                            <li>Quantification de changements (été-hiver).</li>
+                        </ul>
+                    </p>
+                        <div class="project-tech">
+                        <span class="tech-tag">QGIS</span>
+                        <span class="tech-tag">SACP</span>
+                        <span class="tech-tag">Classification supervisé</span>
+                        <span class="tech-tag">Matrice de confusion</span>
+                    </div>
+                    <a href="projets/Rapport_1.pdf" class="project-link">Voir les détails →</a>
+                </div>
+            </div>
+                        <div class="project-card">
+                <div class="project-image">
+                    <div style="background-size:COVER ;height: 400px; background-repeat:no-repeat; background-position: center top; background:url(https://si.wsj.net/public/resources/images/BN-OK744_atlas7_P_20160610090312.jpg)"></div>
+                    <div class="project-tags">
+                        <span class="project-tag">Terminé</span>
+                        <span class="project-tag">Pollution lumineuse</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>
+                        <div class="project-icon">✈️</div>
+                        Effet de la lumière artificilles nocture sur les ANP
+                    </h3>
+                    <p style="text-align: justify;">
+                        Cette étude avait pour objectif principal d'analyser l'évolution spatio-temporelle de la pollution lumineuse (lumières artificielle noctures (ALAN)) de 1992 à 2012, sur les Aires Naturelles Protégées (ANP) de la Nouvelle-Aquitaine (France) afin de mieux appréhender le niveau d'isolement limineux de ces zones protégées. 
+                        Les objectifs spécifiques qui y sont associés sont : <br>
+                        <ul style="padding-left: 40px; text-align:justify;">
+                            <li>Evaluer la distribution spatiale et les évolutions temporelles de l'ALAN à l'intérieur et aux abords des ANP.</li>
+                            <li>Analyser ces évolutions en fonction d'un gradient de distance par raport aux limites des ANP.</li>
+                        </ul> 
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">QGIS</span>
+                        <span class="tech-tag">Modèle Builder</span>
+                        <span class="tech-tag">Rstudio</span>
+                        <span class="tech-tag">Géotraitement</span>
+                    </div>
+                    <a href="projets/Rapport_6.pdf" class="project-link">Voir les détails →</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">
+                    <div style="background-size:COVER ;height: 400px; background-repeat:no-repeat; background-position: center top; background:url(image/image_3.png)"></div>
+                    <div class="project-tags">
+                        <span class="project-tag">Terminé</span>
+                        <span class="project-tag">Climat</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>
+                        <div class="project-icon">🌦️</div>
+                        Prévision de Précipitations Journaliers pour 2100
+                    </h3>
+                    <p style="text-align: justify;">
+                        Cette étude avait pour objectif principal de spatialiser les projections de précipitations totales journalières dans la région de la Nouvelle-Aquitaine, pour le mois de janvier 2100, 
+                        en utilisant les données du modèles ALADIN-Climat selon le scénario de changement climatique le plus péjoratif (RCP 8,5). Les objectifs spécifiques qui y sont associés sont : <br>
+                        <ul style="padding-left: 40px; text-align: justify;">
+                            <li>Spatialiser les projections de précipitations totales jounarlières par la méthode de régression linéaire multiple, en intégrant  certaines variables explicatives.</li>
+                            <li>Comparer les résultats issus de la régression linéaire multiple avec d'autres méthodes d'interpolation (IDW) et le Krigeage.</li>
+                        </ul> 
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">ArcGIS Pro</span>
+                        <span class="tech-tag">GeoDa</span>
+                        <span class="tech-tag">Rstudio</span>
+                        <span class="tech-tag">Spatialisation</span>
+                    </div>
+                    <a href="projets/Rapport_3.pdf" class="project-link">Voir les détails →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <div style="background-size:COVER ;height: 400px; background-repeat:no-repeat; background-position: center top; background:url(image/image_4.jpg)"></div>
+                    <div class="project-tags">
+                        <span class="project-tag">Terminé</span>
+                        <span class="project-tag">Feux de forêts</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>
+                        <div class="project-icon">🛰️</div>
+                        Analyse Multi-temporelle par Télédétection
+                    </h3>
+                    <p style="text-align: justify;">
+                        Cette étude avait pour obejctif principal de montrer l'mpact de la pratique de « l’abattis-brulis » sur la dynamique végétale dans l’Etat de Pará, en Amazonie brésilienne, de 2013 à 2023.
+                        Pour ce faire, nous avons émis trois (3) hypothèses auxquelles nous avons tenté de répondre : <br>
+                        <ul style="padding-left: 40px; text-align: justify;">
+                            <li>H1 : la capacité de régénération de la végétation post abattis-brûlis est influencée par les conditions climatiques (température, précipitation, ensoleillement et humidité relative de l’air).</li>
+                            <li>H2 : La pratique récurrente de l’abattis-brûlis nuit à la régénération de la végétation : la capacité de résilience des végétaux affectés est insuffisante pour rétablir un couvert « normal » sur une période de 4 mois 
+                            (de septembre à décembre).</li>
+                            <li>H3 : la pratique de l’abattis-brûlis a conduit à une réduction notable des surfaces de la forêt primaire amazonienne entre 2013 et 2023.</li>
+                        </ul> 
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Rstudio</span>
+                        <span class="tech-tag">QGIS</span>
+                        <span class="tech-tag">Classification supervisée</span>
+                        <span class="tech-tag">ACP</span>
+                        <span class="tech-tag">CAH</span>
+                    </div>
+                    <a href="projets/Rapport_4.pdf" class="project-link">Voir les détails →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <div style="background-size:COVER ;height: 400px; background-repeat:no-repeat; background-position: center top; background:url(https://i.pinimg.com/originals/83/47/1b/83471bbe6673c05beae194c5e971a837.jpg)"></div>
+                    <div class="project-tags">
+                        <span class="project-tag">Terminé</span>
+                        <span class="project-tag">Milieur Urbain</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>
+                        <div class="project-icon">🛰️</div>
+                        Classification d'Image Pléade en Milieu Urbain
+                    </h3>
+                    <p style="text-align: justify;">
+                        Cette étude avait pour objectif principal de faire une classification de l'occupation du sol d'une à partir d'un image pléiade d'une zone étude situé dans l'Eurométropole de Strasbourg. 
+                        Pour ce faire, deux méthodes de classification (pixel et objet) ont été mobilisées, et comparer entre elles. Un protocle de test basé sur l'aopport d'attributs exogènes (indices spéctraux et texturaux)
+                        dans la classification a aussi été développé. Les objectifs spécifiques qui y sont associés sont : <br>
+                        <ul style="padding-left: 40px; text-align: justify;">
+                            <li>Définition des classes d'occupation du sol.</li>
+                            <li>Sélection des données d'entraînements et de validations.</li>
+                            <li>Entrainement des modèles de classification et application.</li>
+                            <li>Mise en place du protocole de test et application.</li>
+                            <li>Comparaison de la meilleur classification avec une données de référence : OCSGE2. </li>
+                        </ul>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">QGIS</span>
+                        <span class="tech-tag">Python (Panda, matplotlib)</span>
+                        <span class="tech-tag">Modèle Builder</span>
+                        <span class="tech-tag">Orfeo Toolbox Provider (OTB)</span>
+                        <span class="tech-tag">Classification supervisée (pixel et objet)</span>
+                        
+                    </div>
+                    <a href="projets/Rapport_5.pdf" class="project-link">Voir les détails →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <div style="background-size:COVER ;height: 400px; background-repeat:no-repeat; background-position: center top; background:url(https://www.asphalte-evolution.fr/upimg/pages/zoom/6664.jpg)"></div>
+                    <div class="project-tags">
+                        <span class="project-tag">Terminé</span>
+                        <span class="project-tag">Transport</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>
+                        <div class="project-icon">🚗</div>
+                        Traitement et intégration de données réseaux routier
+                    </h3>
+                    <p style="text-align: justify;">
+                        Cette étude avait pour objectif principal de simplifier le jeu de données routier du Modèle ABSUM (Agent-Based Simulation of Urban Mobility), tout en limitant la dégradation de leur qualité,
+                        que ce soit en termes d’attributs, de géométrie et de topologie. les objectifs spécifiques qui y sont associés sont : <br>
+                        <ul style="padding-left: 40px; text-align: justify;">
+                            <li>Identifier et de corriger des erreurs (topologiques et attributaires) de manière automatisée.</li>
+                            <li>intégrer les deux sources de données réseaux (BD Topo et BD Carto) afin de construire un jeu de données adapté aux besoins d’ABSUM.</li>
+                        </ul>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">QGIS</span>
+                        <span class="tech-tag">Analyse de réseaux</span>
+                        <span class="tech-tag">Modèle Builder</span>
+                        <span class="tech-tag">Python (PyGIS)</span>
+                        <span class="tech-tag">Automatisation</span>
+                        <span class="tech-tag">Reproductibilité</span>
+                    </div>
+                    <a href="projets/Memoire_TER.pdf" class="project-link">Voir les détails →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <div style="background-size:COVER ;height: 400px; background-repeat:no-repeat; background-position: center top; background:url(https://img.freepik.com/premium-photo/dem-digital-elevation-model-gis-lidar-product-made-after-proccesing-aerial-pictures-taken-from-drone-by-mapping-neural-network-ai-generated_76080-86975.jpg)"></div>
+                    <div class="project-tags">
+                        <span class="project-tag">Terminé</span>
+                        <span class="project-tag">LiDar</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>
+                        <div class="project-icon">✈️</div>
+                        Analyse LiDAR des Fortifications Séré de Rivières
+                    </h3>
+                    <p style="text-align: justify;">
+                        Cette étude avait pour objectif principal d’établir un inventaire cartographique du secteur d’étude mettant en lumière les polémoformes (trous d’obus, tranchées, abris) de la 
+                        Grande Guerre, menacées actuellement d’effacement (érosion, remblaie, gestion sylvicole, etc.). Les objectifs spécifiques qui y sont associés sont : <br>
+                        <ul style="padding-left: 40px; text-align: justify;">
+                            <li> Création du Modèle Mumérique de Terrain (MNT) à partir de données LiDar.</li>
+                            <li> Traitement du MNT (profil topographique, outils de visualisation des polémoformes).</li>
+                            <li> Etablissement d'un protocole de digitalisation des polémoformes.</li>
+                            <li> Caractérisation des polémoformes à partir d'archives cartographiques anciens.</li> 
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">QGIS</span>
+                        <span class="tech-tag">Géoréférencement</span>
+                        <span class="tech-tag">Enrechissement de Base de données</span>
+                        <span class="tech-tag">RTV</span>
+                    </div>
+                    <a href="projets/Rapport de stage_L3.pdf" class="project-link">Voir les détails →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <div style="background-size:COVER ;height: 400px; background-repeat:no-repeat; background-position: center top; background:url(https://th.bing.com/th/id/R.30d7419ee56399afa18be839803138b7?rik=o%2bCR5HilpsD74Q&pid=ImgRaw&r=0)"></div>
+                    <div class="project-tags">
+                        <span class="project-tag">Terminé</span>
+                        <span class="project-tag">Cartographie dynamique</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>
+                        <div class="project-icon">🌏</div>
+                        Création d'un site web 
+                    </h3>
+                    <p style="text-align: justify;">
+                        Ce projet avait pour but d'imaginer et de créer un espace web complémentaire du site web de l'Observatoire du PNR du Haut-Languedoc, dont le public visé était principalement le grand public. 
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">ArcGis pro</span>
+                        <span class="tech-tag">ArcGis Online</span>
+                        <span class="tech-tag">Dashboard</span>
+                        <span class="tech-tag">Cartographie dynamique</span>
+                    </div>
+                    <a href="https://angeevrardsery11.wixsite.com/pnr-haut-languedoc/g%C3%A9ographie" class="project-link">Voir le site →</a>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contactez-moi</h2>
+        <p style="text-align: center; color: #666; margin: 1rem 0;">
+           Je suis disponible immédiatement et mobile pour toute la France. La découverte de nouveaux horizons et défits, un esprit que j'aime 😊.
+        </p>
+        
+        <div class="contact-section">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informations de Contact</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Téléphone</h4>
+                            <p>+33 7 57 51 62 60</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>angeevrardsery18@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Localisation</h4>
+                            <p>Strasbourg, France</p>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe width="100%" height="400px" frameborder="0" style="border:0" src="https://www.google.com/maps?q=Strasbourg&output=embed" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Ange Evrard Sery - Mon Portfolio</p>
+
+    </footer>
+
+    <script>
+        // Loader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Active navigation on scroll
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', function() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Form character counter
+        const messageInput = document.getElementById('message');
+        const charCount = document.getElementById('charCount');
+
+        messageInput.addEventListener('input', function() {
+            const length = this.value.length;
+            charCount.textContent = length;
+            if (length > 500) {
+                this.value = this.value.substring(0, 500);
+                charCount.textContent = 500;
+            }
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Simulate form submission
+            alert('Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.');
+            
+            // Reset form
+            contactForm.reset();
+            charCount.textContent = '0';
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.skill-card, .project-card, .timeline-content, .education-content').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add typing effect to hero title
+        const heroTitle = document.querySelector('.hero h1');
+        if (heroTitle) {
+            const text = heroTitle.innerHTML;
+            heroTitle.innerHTML = '';
+            let index = 0;
+            
+            function typeWriter() {
+                if (index < text.length) {
+                    heroTitle.innerHTML = text.slice(0, index + 1);
+                    index++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            setTimeout(typeWriter, 1500);
+        }
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.opacity = 1 - (scrolled / window.innerHeight * 0.3);
+            }
+        });
+
+        // Progress bars animation when in view
+        const progressBars = document.querySelectorAll('.progress-fill, .tool-progress-fill');
+        const progressObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.style.width;
+                    entry.target.style.width = '0';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'width 1.5s ease';
+                        entry.target.style.width = width;
+                    }, 100);
+                    progressObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        progressBars.forEach(bar => {
+            progressObserver.observe(bar);
+        });
+
+        // Add hover effect to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add scale effect to skill cards
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Dynamic greeting based on time of day
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            const subtitle = document.querySelector('.hero .subtitle');
+            
+            if (subtitle) {
+                let greeting = '';
+                if (hour < 12) greeting = '🌅 ';
+                else if (hour < 18) greeting = '☀️ ';
+                else greeting = '🌙 ';
+                
+                subtitle.textContent = greeting + subtitle.textContent.replace(/^[🌅☀️🌙]\s/, '');
+            }
+        }
+
+        updateGreeting();
+
+        // Add active state to form inputs
+        document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.3s ease';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+
+        // Add click animation to buttons
+        document.querySelectorAll('.btn, .submit-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.5)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                ripple.style.pointerEvents = 'none';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add CSS animation for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Console message for developers
+        console.log('%c🚀 Portfolio d\'Ange Evrard Sery', 'font-size: 20px; color: #5B5FCF; font-weight: bold;');
+        console.log('%cGéomatique & Observation de la Terre', 'font-size: 14px; color: #666;');
+        console.log('%cSi vous lisez ceci, vous êtes probablement un développeur curieux ! 👋', 'font-size: 12px; color: #999;');
+    </script>
+</body>
+</html>
